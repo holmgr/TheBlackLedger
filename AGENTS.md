@@ -19,18 +19,23 @@ There is currently no dedicated test or asset directory. The battlefield uses pr
 Use the Bun version recorded in `package.json` (currently `1.4.4`).
 
 - `bun install`: install dependencies; commit `bun.lock` when dependencies change.
+- `bun run lint`: run Oxlint with correctness and React Hooks rules; warnings fail the check.
+- `bun run lint:fix`: apply available Oxlint automatic fixes.
+- `bun run format`: format files with Oxfmt.
+- `bun run format:check`: check formatting without changing files.
+- `bun run hooks:install`: enable native Git hooks in `.githooks/` once per clone. The pre-commit hook runs `bun run lint` and `bun run format:check` on the whole working tree.
 - `bun run dev`: start Vite on localhost; open the URL it prints.
 - `bun run build`: run strict TypeScript checking, then generate the production bundle in `dist/`.
 - `bun run preview`: serve the production build locally.
-- `bun install --frozen-lockfile`: install reproducibly in CI, followed by `bun run build`.
+- `bun install --frozen-lockfile`: install reproducibly in CI, followed by `bun run lint`, `bun run format:check`, and `bun run build`.
 
 ## Coding Style & Naming Conventions
 
-Follow existing TypeScript conventions: two-space indentation, single-quoted strings, semicolons, and ES module imports. Use PascalCase for React components and interfaces (`App`, `GameState`), and camelCase for functions and variables (`createBattlefield`, `demoBoard`). Use `.tsx` for JSX and `.ts` for game logic. Keep modules within their architectural layer. No formatter or linter is configured.
+Follow existing TypeScript conventions: two-space indentation, single-quoted strings, semicolons, and ES module imports. Use PascalCase for React components and interfaces (`App`, `GameState`), and camelCase for functions and variables (`createBattlefield`, `demoBoard`). Use `.tsx` for JSX and `.ts` for game logic. Keep modules within their architectural layer. Oxlint checks JavaScript and TypeScript with correctness and React Hooks rules. Oxfmt enforces formatting; run `bun run format` after edits.
 
 ## Testing Guidelines
 
-No automated test framework, test script, or coverage threshold is configured. Run `bun run build` for every code change. For UI or rendering changes, also check the local page: verify the mission header, isometric board, and four operatives render, and inspect the browser console for errors. When introducing automated tests, document the runner and naming convention alongside them.
+No automated test framework, test script, or coverage threshold is configured. Run `bun run lint`, `bun run format:check`, and `bun run build` for every code change. For UI or rendering changes, also check the local page: verify the mission header, isometric board, and four operatives render, and inspect the browser console for errors. When introducing automated tests, document the runner and naming convention alongside them.
 
 ## Commit & Pull Request Guidelines
 

@@ -6,6 +6,7 @@ Install Bun on macOS with `brew install oven-sh/bun/bun`.
 
 ```sh
 bun install
+bun run hooks:install
 bun run dev
 ```
 
@@ -31,15 +32,25 @@ Keep game rules independent of React and Phaser. Start with one encounter, movem
 
 ## Reproducible installs
 
-Commit `bun.lock` when dependencies change. In CI, use `bun install --frozen-lockfile`, then `bun run build`. Use the Bun version recorded in `package.json` for consistent tooling.
+Commit `bun.lock` when dependencies change. In CI, use `bun install --frozen-lockfile`, then `bun run lint`, `bun run format:check`, and `bun run build`. Use the Bun version recorded in `package.json` for consistent tooling.
+
+## Linting and commit hooks
+
+Oxlint checks JavaScript and TypeScript with correctness rules and React Hooks checks enabled. Generated build output is excluded. Run `bun run lint` to check the project or `bun run lint:fix` to apply available automatic fixes. Warnings fail the check.
+
+Oxfmt formats source files, styles, configuration, and documentation using two-space indentation, single quotes, and semicolons. Run `bun run format` to format files or `bun run format:check` to check formatting without changing files. Generated output and `bun.lock` are excluded.
+
+Run `bun run hooks:install` once per clone to enable the versioned native Git hooks in `.githooks/`. This sets the repository-local `core.hooksPath` without an additional hook dependency. Bun must be available on the PATH used by Git (including GUI clients). Before every commit, the pre-commit hook runs `bun run lint` and `bun run format:check` across the project and blocks the commit if either check fails. It checks the working tree, including unstaged changes, and does not modify or stage files. After fixing lint errors or running `bun run format`, stage the fixes and retry the commit. New worktrees share this repository configuration; the hook script is versioned with the source.
 
 ## Continuous integration
 
-GitHub Actions runs the `Build` check on pull requests targeting `main` and pushes to `main`. The workflow installs the Bun version from `package.json`, installs dependencies with the frozen lockfile, then runs strict TypeScript checking and the production build. It can also be started manually from the Actions tab once the workflow is on the default branch.
+GitHub Actions runs the `Build` check on pull requests targeting `main` and pushes to `main`. The workflow installs the Bun version from `package.json`, installs dependencies with the frozen lockfile, then runs linting, formatting checks, strict TypeScript checking, and the production build. CI runs the check commands directly without installing Git hooks. It can also be started manually from the Actions tab once the workflow is on the default branch.
 
 To run the same checks locally:
 
 ```sh
 bun install --frozen-lockfile
+bun run lint
+bun run format:check
 bun run build
 ```

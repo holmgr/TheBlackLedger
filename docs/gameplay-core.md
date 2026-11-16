@@ -22,11 +22,11 @@ The main appeal is mastering characters, builds, and team combinations. Narrativ
 
 These are creative reference points, not specifications to reproduce their mechanics or settings.
 
-| Reference | Desired influence |
-| --- | --- |
-| World of Warcraft and Baldur's Gate | Distinct character roles, abilities, equipment, and RPG progression |
+| Reference                                | Desired influence                                                     |
+| ---------------------------------------- | --------------------------------------------------------------------- |
+| World of Warcraft and Baldur's Gate      | Distinct character roles, abilities, equipment, and RPG progression   |
 | XCOM, Menace, and Star Wars Zero Company | Tactical squad gameplay, deployment decisions, and coordinated combat |
-| Star Wars, XCOM, and Warhammer 40,000 | Sci-fi atmosphere, equipment, factions, and visual inspiration |
+| Star Wars, XCOM, and Warhammer 40,000    | Sci-fi atmosphere, equipment, factions, and visual inspiration        |
 
 The mercenary premise draws particularly on the direction discussed around Zero Company. The exact tone and visual style remain open.
 
@@ -55,15 +55,15 @@ Each character should remain useful independently and fit several squads. Avoid 
 
 These seven specialist roles are a working proposal; names, abilities, and final identities remain open.
 
-| Specialist | Main contribution | Potential tools |
-| --- | --- | --- |
-| Bulwark | Protect allies and hold positions | Heavy armor, interception, portable barriers |
-| Breacher | Assault at close range | Close-range weapons, entry tools, displacement |
-| Marksman | Eliminate priority targets | Precision fire, target marking, overwatch |
-| Engineer | Deploy battlefield tools | Drones, turrets, traps |
-| Field Medic | Sustain and support the squad | Treatment, combat stimulants, protective equipment |
-| Saboteur | Infiltrate and disrupt | Hacking, concealment tools, equipment sabotage |
-| Gunner | Suppress enemies and control firing lanes | Suppressive fire, concussion grenades, braced firing, cover destruction |
+| Specialist  | Main contribution                         | Potential tools                                                         |
+| ----------- | ----------------------------------------- | ----------------------------------------------------------------------- |
+| Bulwark     | Protect allies and hold positions         | Heavy armor, interception, portable barriers                            |
+| Breacher    | Assault at close range                    | Close-range weapons, entry tools, displacement                          |
+| Marksman    | Eliminate priority targets                | Precision fire, target marking, overwatch                               |
+| Engineer    | Deploy battlefield tools                  | Drones, turrets, traps                                                  |
+| Field Medic | Sustain and support the squad             | Treatment, combat stimulants, protective equipment                      |
+| Saboteur    | Infiltrate and disrupt                    | Hacking, concealment tools, equipment sabotage                          |
+| Gunner      | Suppress enemies and control firing lanes | Suppressive fire, concussion grenades, braced firing, cover destruction |
 
 The Gunner replaces the rejected Anomaly Adept concept. No supernatural or gravity-power specialist is planned. The Bulwark protects allies; the Gunner restricts enemy options.
 
