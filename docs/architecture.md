@@ -2,7 +2,7 @@
 
 `src/core/combat.ts` owns serializable combat state, commands, structured rejection reasons, presentation events and preview contracts. It imports neither React nor Phaser. State uses plain data and discriminated phase/outcome status, and round-trips through JSON. IDs are content-authored stable strings, never generated randomly.
 
-`src/core/encounter.ts` accepts unknown content at the boundary, returns path-specific diagnostics, and creates deterministic owned state only after validation. Content cannot mutate initialized state. Validated combat state is the resolver's input contract; this is not a save loader or migration API.
+`src/core/encounter.ts` accepts unknown content at the boundary, returns path-specific diagnostics, and creates deterministic owned state only after validation. Parsing builds typed, owned values from known fields. Encounter rules then check bounds, HP, unique IDs, occupancy and living teams before initial state construction. Field errors are reported first; encounter-wide rules run only after parsing succeeds. Content cannot mutate initialized state. Validated combat state is the resolver's input contract; this is not a save loader or migration API.
 
 The caller owns the current state and replaces it only with the returned next state. Commands describe intent. Successful future resolution returns next state and ordered presentation events; rejection returns the original unchanged state and no events. `resolveCommand(state, command)` currently rejects every reserved command honestly.
 

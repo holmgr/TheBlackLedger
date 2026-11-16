@@ -63,21 +63,14 @@ describe('encounter boundary', () => {
       expect(createEncounter(content).ok).toBe(false);
     },
   );
-  test('reports duplicate IDs, occupancy, team, dimensions and excessive HP', () => {
+  test('reports duplicate IDs, occupancy and excessive HP', () => {
     const content = fixture();
-    content.board.width = 0;
-    content.units[1] = { ...content.units[0], team: 'alien', hp: 11 };
+    content.units[1] = { ...content.units[0], hp: 11 };
     const result = createEncounter(content);
     expect(result.ok).toBe(false);
     if (!result.ok)
       expect(result.diagnostics.map((d) => d.path)).toEqual(
-        expect.arrayContaining([
-          'board',
-          'units[1].id',
-          'units[1].team',
-          'units[1].hp',
-          'units[1].position',
-        ]),
+        expect.arrayContaining(['units[1].id', 'units[1].hp', 'units[1].position']),
       );
   });
   test('requires both living teams but knocked-out units do not occupy tiles', () => {
@@ -136,4 +129,14 @@ test('rejects sparse unit arrays with a diagnostic for the missing entry', () =>
       path: 'units[2]',
       message: 'Expected unit object.',
     });
+});
+
+test('reports field errors before checking encounter rules', () => {
+  const content = fixture();
+  content.board.width = 0;
+  content.units[1].team = 'alien';
+  const result = createEncounter(content);
+  expect(result.ok).toBe(false);
+  if (!result.ok)
+    expect(result.diagnostics.map((error) => error.path)).toEqual(['board.width', 'units[1].team']);
 });

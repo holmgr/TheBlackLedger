@@ -1,4 +1,5 @@
 export type Team = 'player' | 'enemy';
+export type CombatOutcome = 'victory' | 'defeat' | 'draw';
 export interface Position {
   x: number;
   y: number;
@@ -27,7 +28,7 @@ export interface CombatUnit extends UnitDefinition {
 }
 export type CombatStatus =
   | { kind: 'active'; phase: Team }
-  | { kind: 'finished'; outcome: 'victory' | 'defeat' | 'draw' };
+  | { kind: 'finished'; outcome: CombatOutcome };
 export interface CombatState {
   encounterId: string;
   board: Board;
@@ -59,7 +60,7 @@ export type PresentationEvent =
   | { type: 'damaged'; unitId: string; amount: number; hp: number }
   | { type: 'knocked-out'; unitId: string }
   | { type: 'phase-started'; phase: Team; round: number }
-  | { type: 'combat-ended'; outcome: 'victory' | 'defeat' | 'draw' };
+  | { type: 'combat-ended'; outcome: CombatOutcome };
 export type ResolutionResult =
   | { accepted: true; nextState: CombatState; events: PresentationEvent[] }
   | { accepted: false; nextState: CombatState; events: []; rejection: Rejection };
