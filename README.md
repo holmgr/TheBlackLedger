@@ -32,3 +32,14 @@ Keep game rules independent of React and Phaser. Start with one encounter, movem
 ## Reproducible installs
 
 Commit `bun.lock` when dependencies change. In CI, use `bun install --frozen-lockfile`, then `bun run build`. Use the Bun version recorded in `package.json` for consistent tooling.
+
+## Continuous integration
+
+GitHub Actions runs the `Build` check on pull requests targeting `main` and pushes to `main`. The workflow installs the Bun version from `package.json`, installs dependencies with the frozen lockfile, then runs strict TypeScript checking and the production build. It can also be started manually from the Actions tab once the workflow is on the default branch.
+
+To run the same checks locally:
+
+```sh
+bun install --frozen-lockfile
+bun run build
+```
