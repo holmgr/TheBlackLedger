@@ -10,7 +10,7 @@ bun run hooks:install
 bun run dev
 ```
 
-Open the local URL printed by Vite. The hello-world screen displays a placeholder isometric board and four operatives; combat and persistence are not implemented yet.
+Open the local URL printed by Vite. The screen displays one live encounter shared by React and Phaser: four selectable operatives and an enemy sentry. Click a figure, tile, or roster card to inspect its ID, position, HP and AP. Empty ground or Clear selection clears the highlight; Reset encounter restores the initial encounter. Combat commands and persistence are not implemented yet.
 
 ```sh
 bun run build

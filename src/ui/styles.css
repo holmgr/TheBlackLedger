@@ -72,3 +72,55 @@ footer {
     gap: 16px;
   }
 }
+button {
+  font: inherit;
+  color: #e2edea;
+  border: 1px solid #34505c;
+  background: #172b36;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+button:hover:not(:disabled),
+button[aria-pressed='true'] {
+  border-color: #f7db83;
+}
+button:focus-visible {
+  outline: 2px solid #f7db83;
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: default;
+}
+.inspection {
+  margin-top: 18px;
+}
+.selection {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.selection span,
+.roster span {
+  font: 12px monospace;
+  color: #b0c7cf;
+}
+.roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+.roster button {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  text-align: left;
+}
+.roster .enemy {
+  border-color: #e38b79;
+}
+.mission {
+  flex-wrap: wrap;
+  gap: 16px;
+}
