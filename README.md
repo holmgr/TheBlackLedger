@@ -54,3 +54,7 @@ bun run lint
 bun run format:check
 bun run build
 ```
+
+## Combat contracts and tests
+
+See [combat rules](docs/combat-rules.md) and [architecture](docs/architecture.md) for provisional rules and shared core contracts. Run `bun test` for colocated `*.test.ts` core tests; CI runs these before the build. Combat mechanics remain unimplemented.
